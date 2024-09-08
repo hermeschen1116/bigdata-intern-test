@@ -6,9 +6,10 @@ authors = ["hermeschen1116 <108386417+hermeschen1116@users.noreply.github.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
-selenium = "^4.24.0"
+python = "^3.11"
 beautifulsoup4 = "^4.12.3"
+lxml = "^5.3.0"
+requests = "^2.32.3"
 
 
 [build-system]
