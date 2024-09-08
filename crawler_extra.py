@@ -47,6 +47,6 @@ for book in book_list[:200]:
 			content_page = BeautifulSoup(response.text, "lxml")
 			book_info["content"] = content_page.select_one("body > p").get_text().split("***")[2].strip()
 			break
-	pprint(book_info)
+
 	with open(f"{result_dir}/{book_info['title'].replace(' ', '_').replace('/', '_')}.json", "w", encoding="utf-8") as file:
 		file.write(json.dumps(book_info, indent=4))
