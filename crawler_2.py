@@ -5,7 +5,6 @@ import uuid
 import json
 import re
 import os
-from random import randint
 
 
 result_dir: str = "./result"

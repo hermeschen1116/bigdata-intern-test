@@ -9,6 +9,8 @@ import os
 from random import randint
 from pprint import pprint
 
+from requests.adapters import ReadTimeout
+
 
 result_dir: str = "./result"
 if not os.path.isdir(result_dir):
@@ -24,7 +26,7 @@ response = requests.get(requested_url, headers=request_headers)
 page = BeautifulSoup(response.text, "lxml")
 
 book_list = page.select_one("div.pgdbbylanguage").select("li > a")
-for book in book_list[:200]:
+for i, book in enumerate(book_list[:200]):
 	response = requests.get(f"{base_url}{book.get('href')}", headers=request_headers)
 	book_page = BeautifulSoup(response.text, "lxml")
 
@@ -50,3 +52,4 @@ for book in book_list[:200]:
 
 	with open(f"{result_dir}/{book_info['title'].replace(' ', '_').replace('/', '_')}.json", "w", encoding="utf-8") as file:
 		file.write(json.dumps(book_info, indent=4))
+	print(f"{i + 1}/200 finished")
